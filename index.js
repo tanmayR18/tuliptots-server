@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 require("dotenv").config();
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const storage = multer.memoryStorage(); // Store files in memory
+const upload = multer({ storage });
 const cors = require("cors");
 const port = process.env.PORT;
 const { joinTeam } = require("./controller/joinTeam");
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/email", upload.array("file", 10), async (req, res) => {
   const file = req.files;
-//   console.log("file", file);
+  //   console.log("file", file);
   //   console.log('body', req.body);
 
   const {
@@ -188,12 +189,12 @@ app.post("/email", upload.array("file", 10), async (req, res) => {
 
   const attachmentsArr = file.map((f) => ({
     filename: f.originalname,
-    path: f.path,
+    content: f.buffer,
     contentType: f.mimetype,
     contentDisposition: "attachment",
   }));
 
-  console.log('attachmentsArr', attachmentsArr)
+  console.log("attachmentsArr", attachmentsArr);
 
   // Mail options
   let mailOptions = {
