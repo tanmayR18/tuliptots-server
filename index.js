@@ -11,8 +11,20 @@ const port = process.env.PORT;
 const { joinTeam } = require("./controller/joinTeam");
 const { enquiry } = require("./controller/enquiry");
 
+const testRoutes = require("./routes/Test");
+const emailRoutes = require("./routes/Email");
+const uploadRoutes = require("./routes/Upload");
+const database = require('./config/database')
+const {cloudinaryConnect} = require('./config/cloudinary')
+
 // Middleware
 app.use(bodyParser.json()); // to parse JSON request bodies
+
+//database connect
+database.connect(); 
+
+//cloudinary connection
+cloudinaryConnect();
 
 app.use(
   cors({
@@ -321,6 +333,10 @@ app.post("/enquiry", async (req, res) => {
     res.status(500);
   }
 });
+
+app.use("/api/v1/test", testRoutes);
+app.use("/api/v1/email", emailRoutes);
+app.use("/api/v1/upload", uploadRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
