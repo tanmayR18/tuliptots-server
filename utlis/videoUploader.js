@@ -6,6 +6,14 @@ exports.uploadVideoToCloudinary = (file, folder) => {
     const options = {
       folder,
       resource_type: "video", // 👈 important!
+      format: "mp4", // enforce mp4 output
+    //   eager: [
+    //     {
+    //       format: "mp4",
+    //       quality: "auto",
+    //     },
+    //   ],
+    //   eager_async: false, 
     };
 
     const stream = cloudinary.uploader.upload_stream(
