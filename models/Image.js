@@ -15,6 +15,10 @@ const imageSchema = new mongoose.Schema({
     type: String,
     required: true, // because Cloudinary needs this to delete the image
   },
+  email: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Image", imageSchema);
