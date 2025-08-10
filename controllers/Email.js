@@ -40,7 +40,8 @@ exports.enquiry = async (req, res) => {
     // Mail options
     let mailOptions = {
       from: process.env.SENDER_MAIL,
-      to: "tanmayrane51@gmail.com",
+    //   to: "tanmayrane51@gmail.com",
+      to: "tuliptotsinternational@gmail.com",
       subject: "Admission Enquiry",
       html: template,
     };
@@ -86,7 +87,8 @@ exports.joinTeam = async (req, res) => {
     // Mail options
     let mailOptions = {
       from: process.env.SENDER_MAIL,
-      to: "tanmayrane51@gmail.com",
+    //   to: "tanmayrane51@gmail.com",
+      to: "tuliptotsinternational@gmail.com",
       subject: "Job enquiry",
       html: template,
     };
