@@ -1,4 +1,4 @@
-const verifiedEmails = ["tanmayrane51@gmail.com"];
+const verifiedEmails = ["tanmayrane51@gmail.com", "adityashirsat1170@gmail.com", "tuliptotsinternational@gmail.com"];
 
 exports.isLogin = async (req, res, next) => {
   try {
